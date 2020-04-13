@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrazon", "Scrazon\Scrazon.csproj", "{FF0D3923-AF5A-4E61-85A0-98ADB035E1F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrazonNative", "ScrazonNative\ScrazonNative.csproj", "{7C522D0D-C3CB-4538-8261-50925B5CAC3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FF0D3923-AF5A-4E61-85A0-98ADB035E1F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF0D3923-AF5A-4E61-85A0-98ADB035E1F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF0D3923-AF5A-4E61-85A0-98ADB035E1F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF0D3923-AF5A-4E61-85A0-98ADB035E1F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C522D0D-C3CB-4538-8261-50925B5CAC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C522D0D-C3CB-4538-8261-50925B5CAC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C522D0D-C3CB-4538-8261-50925B5CAC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C522D0D-C3CB-4538-8261-50925B5CAC3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
