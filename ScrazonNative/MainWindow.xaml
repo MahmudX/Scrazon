@@ -9,17 +9,23 @@
         Icon="amaico.ico"
         Title="Scrazon" 
         Closing="Window_Closing"
-        Height="450" Width="850" FontSize="15"
+        Height="460" Width="850" FontSize="15"
         WindowStyle="SingleBorderWindow"
         ResizeMode ="CanMinimize" 
         WindowStartupLocation="CenterScreen">
     <!--AllowsTransparency="True"-->
     <Grid fw:PointerTracker.Enabled="True" Background="#35FFFFFF">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Margin="5"
+                    Grid.RowSpan="2"
                     HorizontalAlignment="Left">
             <TextBlock FontSize="20" Text="Enter a product code:" Margin="0,5,0,3"/>
             <TextBox x:Name="code" Width="300" 
@@ -98,106 +104,118 @@
                                HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="0" Grid.Column="1">
+            <TextBlock FontSize="20" 
+                       Text="Recent Search" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0,5,0,3"/>
+            <Ellipse x:Name="existsInViedIndicator"
+                     Width="15"
+                     Height="15"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Margin="5,0,0,0"/>
+        </StackPanel>
+        <ListBox x:Name="viewdItemListBox"
+                 FontSize="20"
+                 Margin="0,5,5,5"
+                 Background="#35FFFFFF"
+                 Grid.Column="1"
+                 Foreground="LavenderBlush"
+                 Grid.Row="1"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 ScrollViewer.CanContentScroll="False"/>
+        <!--Session Area-->
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Stretch" 
+                    Margin="5">
             <CheckBox Content="Headless"
                     x:Name="headlessCheck"
                     Checked="headlessCheck_Checked"
                     Unchecked="headlessCheck_Unchecked"
-                    Margin="0,3"
+                    Margin="31,3"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Left"
                     IsChecked="True"
-                    VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White">
-                <CheckBox.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform X="26" Y="9"/>
-                    </TransformGroup>
-                </CheckBox.RenderTransform>
-            </CheckBox>
-        </StackPanel>
-        <!--Session Area-->
-        <StackPanel Grid.Row="1" 
-                    HorizontalAlignment="Stretch" 
-                    Margin="5" Orientation="Horizontal">
-            <Ellipse x:Name="indicatorCircle"
+                    VerticalContentAlignment="Center"
+                    Foreground="White"/>
+            <StackPanel HorizontalAlignment="Stretch"
+                        Margin="5" 
+                        Orientation="Horizontal">
+                <Ellipse x:Name="indicatorCircle"
                      Width="20"
                      Height="20"
                      Margin="0,0,5,0"
                      Fill="#ed2449"/>
-            <Button x:Name="createSession"
+                <Button x:Name="createSession"
                     Style="{StaticResource ButtonRevealStyle}"
                     Click="createSession_Click"
                     Padding="2" Width="140" Margin="2">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="&#xE768;" 
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE768;" 
                                FontFamily="Segoe MDL2 Assets" 
                                Margin="2"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Create Session" 
+                        <TextBlock Text="Create Session" 
                                Margin="2"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="closeSession"
+                    </StackPanel>
+                </Button>
+                <Button x:Name="closeSession"
                     Style="{StaticResource ButtonRevealStyle}"
                     Click="closeSession_Click"
                     IsEnabled="False"
                     Padding="2" Width="140" Margin="2">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="&#xE71A;" 
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE71A;" 
                                FontFamily="Segoe MDL2 Assets" 
                                Margin="2"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Close Session" 
+                        <TextBlock Text="Close Session" 
                                Margin="2"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="restartSession"
+                    </StackPanel>
+                </Button>
+                <Button x:Name="restartSession"
                     Click="restartSession_Click"
                     IsEnabled="False"
                     Style="{StaticResource ButtonRevealStyle}"
                     Padding="2" Width="140" Margin="2">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="&#xE777;" 
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE777;" 
                                FontFamily="Segoe MDL2 Assets" 
                                Margin="2"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Restart Session" 
+                        <TextBlock Text="Restart Session" 
                                Margin="2"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <TextBlock HorizontalAlignment="Right"
+                    </StackPanel>
+                </Button>
+                <TextBlock HorizontalAlignment="Right"
                        VerticalAlignment="Center"
-                       Margin="2,8">
-                © Mahmudul Hasan |
-                <Hyperlink NavigateUri="http://mahmudx.com/"
+                       Margin="2,8"><Run Text="© Mahmudul Hasan | "/><Hyperlink NavigateUri="http://mahmudx.com/"
                            RequestNavigate="mahmudx_RequestNavigate"
-                           Cursor="Hand">
-                    <Run Text="MahmudX"/>
-                </Hyperlink>
-                | 
-                <Hyperlink NavigateUri="https://www.mahmudnotes.com"
+                           Cursor="Hand"><Run Text="MahmudX"/></Hyperlink><Run Text=" | "/><Hyperlink NavigateUri="https://www.mahmudnotes.com"
                            RequestNavigate="mahmudnotes_RequestNavigate"
-                           Cursor="Hand">
-                    <Run Text="mahmudNotes"/>
-                </Hyperlink>
-            </TextBlock>
-            <Button Click="infourlbutton_Click"
+                           Cursor="Hand"><Run Text="mahmudNotes"/></Hyperlink></TextBlock>
+                <Button Click="infourlbutton_Click"
                     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                     Cursor="Hand" Content="&#xE946;" 
                     HorizontalAlignment="Right"
                     FontFamily="Segoe MDL2 Assets"
                     Margin="10,0,0,0"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

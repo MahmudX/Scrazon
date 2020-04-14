@@ -2,6 +2,7 @@
 using ScrazonNative;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +18,7 @@ namespace Scrazon
         static SolidColorBrush greenColor;
         static SolidColorBrush yellowColor;
         static SaveFileDialog saveFileDialog;
+        public static ObservableCollection<string> ViewedItem;
         static StreamWriter streamWriter;
         static bool locationset = false;
         static bool condition = false;
@@ -26,12 +28,15 @@ namespace Scrazon
         public MainWindow()
         {
             InitializeComponent();
+            ViewedItem = new ObservableCollection<string>();
+            viewdItemListBox.ItemsSource = ViewedItem;
             redColor = new SolidColorBrush();
             redColor.Color = Color.FromRgb(237, 36, 73);
             greenColor = new SolidColorBrush();
             greenColor.Color = Color.FromRgb(36, 237, 120);
             yellowColor = new SolidColorBrush();
             yellowColor.Color = Color.FromRgb(237, 173, 36);
+            existsInViedIndicator.Fill = greenColor;
         }
 
         private async void createSession_Click(object sender, RoutedEventArgs e)
@@ -95,6 +100,10 @@ namespace Scrazon
                 {
                     saveButton.IsEnabled = true;
                 }
+                if (!ViewedItem.Contains(code.Text))
+                {
+                    ViewedItem.Add(code.Text);
+                }
             }
             catch (Exception)
             {
@@ -124,6 +133,10 @@ namespace Scrazon
             else
             {
                 searchButton.IsEnabled = true;
+            }
+            if (ViewedItem.Contains(code.Text))
+            {
+                existsInViedIndicator.Fill = yellowColor;
             }
         }
 
