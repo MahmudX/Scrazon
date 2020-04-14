@@ -21,6 +21,7 @@ namespace Scrazon
         static bool locationset = false;
         static bool condition = false;
         static bool isdataavailable = false;
+        static bool isHeadless = true;
         static AmazonProduct data;
         public MainWindow()
         {
@@ -35,7 +36,7 @@ namespace Scrazon
 
         private async void createSession_Click(object sender, RoutedEventArgs e)
         {
-            bool status = await Amazon.OpenDriverAsync();
+            bool status = await Amazon.OpenDriverAsync(isHeadless);
             if (status)
             {
                 indicatorCircle.Fill = greenColor;
@@ -50,6 +51,7 @@ namespace Scrazon
                 closeSession.IsEnabled = true;
                 createSession.IsEnabled = false;
                 condition = true;
+                restartSession.IsEnabled = true;
             }
             else
             {
@@ -63,6 +65,7 @@ namespace Scrazon
             if (status)
             {
                 indicatorCircle.Fill = redColor;
+                restartSession.IsEnabled = false;
             }
             else
             {
@@ -191,6 +194,22 @@ namespace Scrazon
         private void infourlbutton_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://mahmudx.azurewebsites.net/product/scrazon");
+        }
+
+        private void headlessCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            isHeadless = true;
+        }
+
+        private void headlessCheck_Unchecked(object sender, RoutedEventArgs e)
+        {
+            isHeadless = false;
+        }
+
+        private void restartSession_Click(object sender, RoutedEventArgs e)
+        {
+            closeSession_Click(sender, e);
+            createSession_Click(sender, e);
         }
     }
 }

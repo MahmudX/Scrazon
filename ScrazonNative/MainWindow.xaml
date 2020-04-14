@@ -80,6 +80,42 @@
                                HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
+            <Button x:Name="setSavelocation"
+                    Style="{StaticResource ButtonAccentRevealStyle}"
+                    Click="setSavelocation_Click"
+                    HorizontalAlignment="Left"
+                    IsEnabled="True"
+                    Padding="2" Width="150" Margin="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xE78C;" 
+                               FontFamily="Segoe MDL2 Assets" 
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Set Save Location" 
+                               Margin="2"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <CheckBox Content="Headless"
+                    x:Name="headlessCheck"
+                    Checked="headlessCheck_Checked"
+                    Unchecked="headlessCheck_Unchecked"
+                    Margin="0,3"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Left"
+                    IsChecked="True"
+                    VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="White">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="26" Y="9"/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
         </StackPanel>
         <!--Session Area-->
         <StackPanel Grid.Row="1" 
@@ -123,18 +159,18 @@
                                HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="setSavelocation"
-                    Style="{StaticResource ButtonAccentRevealStyle}"
-                    Click="setSavelocation_Click"
-                    IsEnabled="True"
-                    Padding="2" Width="150" Margin="2">
+            <Button x:Name="restartSession"
+                    Click="restartSession_Click"
+                    IsEnabled="False"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Padding="2" Width="140" Margin="2">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="&#xE78C;" 
+                    <TextBlock Text="&#xE777;" 
                                FontFamily="Segoe MDL2 Assets" 
                                Margin="2"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Set Save Location" 
+                    <TextBlock Text="Restart Session" 
                                Margin="2"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"/>

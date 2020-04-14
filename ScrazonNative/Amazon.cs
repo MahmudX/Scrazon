@@ -65,14 +65,17 @@ namespace ScrazonNative
             return amazonProduct;
 
         }
-        public async static Task<bool> OpenDriverAsync()
+        public async static Task<bool> OpenDriverAsync(bool isHeadless)
         {
             try
             {
                 var options = new ChromeOptions();
                 var ffds = ChromeDriverService.CreateDefaultService();
                 ffds.HideCommandPromptWindow = true;
-                options.AddArguments("--headless");
+                if (isHeadless)
+                {
+                    options.AddArguments("--headless");
+                }
                 await Task.Run(() => driver = new ChromeDriver(ffds, options));
                 return true;
             }
