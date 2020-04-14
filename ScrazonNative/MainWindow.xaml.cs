@@ -138,6 +138,10 @@ namespace Scrazon
             {
                 existsInViedIndicator.Fill = yellowColor;
             }
+            else
+            {
+                existsInViedIndicator.Fill = greenColor;
+            }
         }
 
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
