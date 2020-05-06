@@ -94,7 +94,6 @@ namespace Scrazon
                 rating.Text = data.Rating.ToString();
                 totalreview.Text = data.TotalReviews.ToString();
                 recent.Text = data.RecentReviews.ToString();
-                percentage.Text = data.Percentage.ToString();
                 isdataavailable = true;
                 if (locationset)
                 {
@@ -162,8 +161,7 @@ namespace Scrazon
                 data.URL,
                 data.Rating.ToString(),
                 data.TotalReviews.ToString(),
-                data.RecentReviews.ToString(),
-                data.Percentage.ToString()
+                data.RecentReviews.ToString()
             };
             using (streamWriter = File.AppendText(saveFileDialog.FileName))
             {
@@ -227,6 +225,11 @@ namespace Scrazon
         {
             closeSession_Click(sender, e);
             createSession_Click(sender, e);
+        }
+
+        private void resetSearchList_Click(object sender, RoutedEventArgs e)
+        {
+            ViewedItem.Clear();
         }
     }
 }

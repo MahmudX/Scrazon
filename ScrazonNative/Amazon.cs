@@ -60,8 +60,7 @@ namespace ScrazonNative
                 .Text.Split()[0]);
             int pagerange = amazonProduct.TotalReviews / 10;
             amazonProduct.RecentReviews = await GetRecentReviewsAsync(pagerange, code);
-            double d = (int.Parse(amazonProduct.RecentReviews.ToString()) * 100 / amazonProduct.TotalReviews);
-            amazonProduct.Percentage = (float)Math.Round(d, 2);
+            
             return amazonProduct;
 
         }

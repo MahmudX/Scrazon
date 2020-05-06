@@ -7,6 +7,7 @@
         fw:AcrylicWindow.Enabled="True"
         mc:Ignorable="d"
         Icon="amaico.ico"
+        Topmost="True"
         Title="Scrazon" 
         Closing="Window_Closing"
         Height="460" Width="850" FontSize="15"
@@ -56,7 +57,6 @@
                     <TextBlock FontSize="20" Text="Rating: "/>
                     <TextBlock FontSize="20" Text="Total Review:"/>
                     <TextBlock FontSize="20" Text="Recent Review:"/>
-                    <TextBlock FontSize="20" Text="Percentage: "/>
                     <TextBlock FontSize="20" Text="Saving Location: "/>
                 </StackPanel>
                 <StackPanel Margin="5,0,0,0">
@@ -64,7 +64,6 @@
                     <TextBlock x:Name="rating" FontSize="20"/>
                     <TextBlock x:Name="totalreview" FontSize="20"/>
                     <TextBlock x:Name="recent" FontSize="20"/>
-                    <TextBlock x:Name="percentage" FontSize="20"/>
                     <TextBlock x:Name="savingLocationText" FontSize="20"/>
                 </StackPanel>
             </StackPanel>
@@ -105,7 +104,9 @@
                 </StackPanel>
             </Button>
         </StackPanel>
+        <!--Recent View Area-->
         
+         <!--Header-->
         <StackPanel Orientation="Horizontal"
                     Grid.Row="0" Grid.Column="1">
             <TextBlock FontSize="20" 
@@ -118,14 +119,26 @@
                      Height="15"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Center"
-                     Margin="5,0,0,0"/>
+                     Margin="5,5,0,3"/>
+            <Button x:Name="resetSearchList"
+                    Click="resetSearchList_Click"
+                    Content="&#xE72C;" 
+                    FontSize="15" 
+                    Width="25"
+                    Height="25"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontFamily="Segoe MDL2 Assets" 
+                    HorizontalAlignment="Right"
+                    Margin="15,5,5,3"
+                    Style="{StaticResource ButtonAccentRevealStyle}"/>
         </StackPanel>
+        <!--ListView-->
         <ListBox x:Name="viewdItemListBox"
                  FontSize="20"
                  Margin="0,5,5,5"
                  Background="#35FFFFFF"
                  Grid.Column="1"
-                 Foreground="LavenderBlush"
                  Grid.Row="1"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                  ScrollViewer.CanContentScroll="False"/>
@@ -142,8 +155,7 @@
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Left"
                     IsChecked="True"
-                    VerticalContentAlignment="Center"
-                    Foreground="White"/>
+                    VerticalContentAlignment="Center"/>
             <StackPanel HorizontalAlignment="Stretch"
                         Margin="5" 
                         Orientation="Horizontal">
